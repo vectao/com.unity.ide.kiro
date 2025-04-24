@@ -503,7 +503,7 @@ namespace Microsoft.Unity.VisualStudio.Editor {
 
 			var newArgs = string.IsNullOrEmpty(path) ?
 				$"--new-window \"{directory}\"" :
-				$"--new-window -g \"{path}\":{line}:{column}";
+				$"--new-window \"{directory}\" -g \"{path}\":{line}:{column}";
 			
 			ProcessRunner.Start(ProcessStartInfoFor(application, newArgs));
 			return true;
