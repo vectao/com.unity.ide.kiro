@@ -130,7 +130,7 @@ namespace Microsoft.Unity.VisualStudio.Editor
 #if UNITY_EDITOR_OSX
 				cursorStoragePath = Path.Combine(userProfile, "Library", "Application Support", "cursor", "User", "workspaceStorage");
 #elif UNITY_EDITOR_LINUX
-				cursorStoragePath = Path.Combine(userProfile, ".config", "cursor", "User", "workspaceStorage");
+				cursorStoragePath = Path.Combine(userProfile, ".config", "Cursor", "User", "workspaceStorage");
 #else
 				cursorStoragePath = Path.Combine(userProfile, "AppData", "Roaming", "cursor", "User", "workspaceStorage");
 #endif
