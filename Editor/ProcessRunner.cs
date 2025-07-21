@@ -125,21 +125,21 @@ namespace Microsoft.Unity.VisualStudio.Editor
 			{
 				var workspaces = new List<string>();
 				var userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-				string cursorStoragePath;
+				string kiroStoragePath;
 
 #if UNITY_EDITOR_OSX
-				cursorStoragePath = Path.Combine(userProfile, "Library", "Application Support", "cursor", "User", "workspaceStorage");
+				kiroStoragePath = Path.Combine(userProfile, "Library", "Application Support", "kiro", "User", "workspaceStorage");
 #elif UNITY_EDITOR_LINUX
-				cursorStoragePath = Path.Combine(userProfile, ".config", "Cursor", "User", "workspaceStorage");
+				kiroStoragePath = Path.Combine(userProfile, ".config", "Kiro", "User", "workspaceStorage");
 #else
-				cursorStoragePath = Path.Combine(userProfile, "AppData", "Roaming", "cursor", "User", "workspaceStorage");
+				kiroStoragePath = Path.Combine(userProfile, "AppData", "Roaming", "kiro", "User", "workspaceStorage");
 #endif
 				
-				Debug.Log($"[Cursor] Looking for workspaces in: {cursorStoragePath}");
+				Debug.Log($"[Kiro] Looking for workspaces in: {kiroStoragePath}");
 				
-				if (Directory.Exists(cursorStoragePath))
+				if (Directory.Exists(kiroStoragePath))
 				{
-					foreach (var workspaceDir in Directory.GetDirectories(cursorStoragePath))
+					foreach (var workspaceDir in Directory.GetDirectories(kiroStoragePath))
 					{
 						try
 						{
@@ -191,21 +191,21 @@ namespace Microsoft.Unity.VisualStudio.Editor
 						}
 						catch (Exception ex)
 						{
-							Debug.LogWarning($"[Cursor] Error reading workspace state file: {ex.Message}");
+							Debug.LogWarning($"[Kiro] Error reading workspace state file: {ex.Message}");
 							continue;
 						}
 					}
 				}
 				else
 				{
-					Debug.LogWarning($"[Cursor] Workspace storage directory not found: {cursorStoragePath}");
+					Debug.LogWarning($"[Kiro] Workspace storage directory not found: {kiroStoragePath}");
 				}
 
 				return workspaces.Distinct().ToArray();
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError($"[Cursor] Error getting workspace directory: {ex.Message}");
+				Debug.LogError($"[Kiro] Error getting workspace directory: {ex.Message}");
 				return null;
 			}
 		}
